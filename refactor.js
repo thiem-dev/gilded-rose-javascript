@@ -21,11 +21,11 @@ export class MarketItem extends ItemR{
             this.updateRegularItemQuality();
         }
 
-        // this.decreaseSellIn();
+        this.decreaseSellIn();
 
-        // if (this.sellIn < 0) {
-        //     this.updateExpiredItemQuality();
-        // }
+        if (this.sellIn < 0) {
+            this.updateExpiredItemQuality();
+        }
     }
 
     updateRegularItemQuality(){
@@ -47,10 +47,21 @@ export class MarketItem extends ItemR{
     }
 
 
-    decreaseSellin(){
-    if (this.name !== "Sulfuras, Hand of Ragnaros") {
-        this.sellIn -= 1;
+    decreaseSellIn(){
+        if (this.name !== "Sulfuras, Hand of Ragnaros") {
+            this.sellIn -= 1;
+        }
     }
+
+    updateExpiredItemQuality(){
+        if(this.name !== "Aged Brie" && this.name !== "Backstage passes to a TAFKAL80ETC concert"){
+            this.quality -= 2
+        } else if(this.name === "Backstage passes to a TAFKAL80ETC concert") {
+            this.quality = 0;
+        } else if(this.name == "Aged Brie"){
+            this.updateAgedBrieQuality()
+        }
+
     }
 }
 
