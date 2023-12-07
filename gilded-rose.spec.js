@@ -14,6 +14,17 @@ describe("updateQuality", () => {
 });
 
 // test: sellin = 0 | quality degrade x2 
+describe("updateQuality", () => {
+  it("expired items degrade quality 2x faster", () => {
+    const testItem = new Item("expired item", -1, 10);
+    items.push(testItem);
+
+    updateQuality();
+
+    expect(testItem.quality).toBe(8);
+    expect(testItem.sellIn).toBe(-2);
+  });
+});
 
 // test: quality negative
 
