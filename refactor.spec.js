@@ -13,7 +13,7 @@ describe("updateQuality", () => {
   });
 
   it("expired items degrade quality 2x faster", () => {
-    const testItem = new MarketItem("expired item", -1, 10);
+    const testItem = new MarketItem("regular expired item", -1, 10);
     items.push(testItem);
 
     updateQuality();
@@ -23,7 +23,7 @@ describe("updateQuality", () => {
   });
 
   it.skip("items cannot have 0 or less quality", () => {
-    const testItem = new MarketItem("expired item", 5, 0);
+    const testItem = new MarketItem("regular expired item", 5, 0);
     items.push(testItem);
 
     updateQuality();

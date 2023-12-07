@@ -55,13 +55,19 @@ export class MarketItem extends ItemR{
 
     updateExpiredItemQuality(){
         if(this.name !== "Aged Brie" && this.name !== "Backstage passes to a TAFKAL80ETC concert"){
-            this.quality -= 2
+            this.updateRegularItemQuality()
         } else if(this.name === "Backstage passes to a TAFKAL80ETC concert") {
             this.quality = 0;
         } else if(this.name == "Aged Brie"){
             this.updateAgedBrieQuality()
         }
 
+    }
+
+    updateAgedBrieQuality(){
+        if (this.quality < 50) {
+            this.quality += 1;
+        }
     }
 }
 
