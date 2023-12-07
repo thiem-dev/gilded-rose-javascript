@@ -15,26 +15,42 @@ export class MarketItem extends ItemR{
     }
 
     updateQuality(){
-        if(specialItemsList.includes(this.name)){
+        if(specialItemsList.includes(this.name) || this.name.includes('Conjured')){
             this.updateSpecialItemQuality()
         } else {
             this.updateRegularItemQuality();
         }
 
+        // this.decreaseSellIn();
+
+        // if (this.sellIn < 0) {
+        //     this.updateExpiredItemQuality();
+        // }
     }
 
     updateRegularItemQuality(){
-        console.log(this.name, 'is a regular item')
-        return;
-        if(this.sellIn > 0 && this.quality > 0){
-            this.quality -= 1;
-        } else {
-            this.quality -= 2;
+        // console.log(this.name, 'is a regular item')
+        if(this.quality > 0 && this.name !== "Sulfuras, Hand of Ragnaros"){
+            this.quality -= 1
         }
+        
     }
 
     updateSpecialItemQuality(){
-        console.log(this.name, 'is a special item')
+        // console.log(this.name, 'is a special item')
+
+        if (this.quality < 50) {
+            this.quality += 1;
+        }
+
+        // switch
+    }
+
+
+    decreaseSellin(){
+    if (this.name !== "Sulfuras, Hand of Ragnaros") {
+        this.sellIn -= 1;
+    }
     }
 }
 
