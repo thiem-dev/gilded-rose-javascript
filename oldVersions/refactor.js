@@ -1,4 +1,4 @@
-import { specialItemsList } from "./specialItemList.js";
+import { specialItemsList } from "../specialItemList.js";
 
 export class ItemR {
     constructor(name, sellIn, quality) {
