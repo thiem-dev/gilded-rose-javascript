@@ -30,6 +30,8 @@ export class MarketItem extends ItemR{
 
     updateRegularItemQuality(){
         // console.log(this.name, 'is a regular item')
+
+        
         if(this.quality > 0 && this.name !== "Sulfuras, Hand of Ragnaros"){
             this.quality -= 1
         }
@@ -38,6 +40,11 @@ export class MarketItem extends ItemR{
 
     updateSpecialItemQuality(){
         // console.log(this.name, 'is a special item')
+
+        if(this.name === "Backstage passes to a TAFKAL80ETC concert"){
+            this.updateBackstagePassQuality()
+            return;
+        }
 
         if (this.quality < 50) {
             this.quality += 1;
@@ -69,6 +76,20 @@ export class MarketItem extends ItemR{
             this.quality += 1;
         }
     }
+
+    updateBackstagePassQuality(){
+        if (this.quality < 50) {
+            this.quality += 1;
+        
+            if (this.sellIn <= 10) {
+                this.quality += 1;
+            }
+            if (this.sellIn <= 5) {
+                this.quality += 1;
+            }
+
+        }
+    }
 }
 
 
@@ -85,14 +106,14 @@ itemsR.push(new MarketItem("Lucky Charms", 0, 4))
 
 
 export const nextDay = () => {
-    console.log(itemsR)
+    // console.log(itemsR)
     for(let item of itemsR){
         //end of day
         item.updateQuality()
 
     }
 
-    console.log(itemsR)
+    // console.log(itemsR)
 }
 
 nextDay();

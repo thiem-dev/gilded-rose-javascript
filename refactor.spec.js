@@ -22,7 +22,7 @@ describe("updateQuality", () => {
     expect(testItem.sellIn).toBe(-2);
   });
 
-  it.skip("items cannot have 0 or less quality", () => {
+  it("items cannot have 0 or less quality", () => {
     const testItem = new MarketItem("regular expired item", 5, 0);
     items.push(testItem);
 
@@ -59,7 +59,7 @@ describe("updateQuality", () => {
   })
 
 
-  it.skip("backstage passes | quality +2 | less than 10 days ", () => {
+  it("backstage passes | quality +2 | less than 10 days ", () => {
     const testItem = new MarketItem("Backstage passes to a TAFKAL80ETC concert", 9, 20);
     items.push(testItem)
 
@@ -69,7 +69,7 @@ describe("updateQuality", () => {
   })
 
 
-  it.skip("backstage passes | quality +3 | less than 5 days ", () => {
+  it("backstage passes | quality +3 | less than 5 days ", () => {
     const testItem = new MarketItem("Backstage passes to a TAFKAL80ETC concert", 3, 20);
     items.push(testItem)
 
@@ -78,7 +78,7 @@ describe("updateQuality", () => {
     expect(testItem.quality).toBe(23);
   })
 
-  it.skip("backstage passes | quality is 0 | day 0 ", () => {
+  it("backstage passes | quality is 0 | day 0 ", () => {
     const testItem = new MarketItem("Backstage passes to a TAFKAL80ETC concert", 0, 20);
     items.push(testItem)
 
