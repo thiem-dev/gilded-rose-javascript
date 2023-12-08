@@ -1,12 +1,12 @@
 import { expect, describe, it } from "vitest";
-import { Item, items, nextDay as updateQuality } from "./refactor2.js";
+import { items, Item,  updateListings, basicItem, LegendaryItem, AgedBrie, stagePass, } from "./refactor2.js";
 
 describe("updateQuality", () => {
   it("reduces quality and sellIn of basic items by 1", () => {
-    const testItem = new MarketItem("basic", 5, 3);
+    const testItem = new basicItem("basic", 5, 3);
     items.push(testItem);
 
-    updateQuality();
+    updateListings();
 
     expect(testItem.quality).toBe(2);
     expect(testItem.sellIn).toBe(4);
