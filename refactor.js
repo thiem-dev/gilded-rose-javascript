@@ -46,11 +46,15 @@ export class MarketItem extends ItemR{
             return;
         }
 
+        if(this.name.includes('Conjured')){
+            this.updateConjuredQuality()
+            return;
+        }
+
         if (this.quality < 50) {
             this.quality += 1;
         }
 
-        // switch
     }
 
 
@@ -89,6 +93,10 @@ export class MarketItem extends ItemR{
             }
 
         }
+    }
+
+    updateConjuredQuality(){
+        this.quality -= 2;
     }
 }
 

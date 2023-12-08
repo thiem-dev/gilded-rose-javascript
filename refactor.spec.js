@@ -31,7 +31,7 @@ describe("updateQuality", () => {
     expect(testItem.quality).toBe(0);
   });
 
-  it.skip("Aged Brie increases in quality as sellIn days decreases", () => {
+  it("Aged Brie increases in quality as sellIn days decreases", () => {
     const testItem = new MarketItem("Aged Brie", 4, 0);
     items.push(testItem)
 
@@ -42,7 +42,7 @@ describe("updateQuality", () => {
   })
 
 
-  it.skip("Quality cannot increase over 50 except Sulfuras", () => {
+  it("Quality cannot increase over 50 except Sulfuras", () => {
     const testItem = new MarketItem("High Quality item", 5, 51);
     const sulfurasItem = new MarketItem("Sulfuras, Hand of Ragnaros", 0, 80)
     const brieItem = new MarketItem("Aged Brie", 0, 50)
@@ -87,7 +87,7 @@ describe("updateQuality", () => {
     expect(testItem.quality).toBe(0);
   })
 
-  it.skip("conjured item lose 2x quality per day", () => {
+  it("conjured item lose 2x quality per day", () => {
     const testItem = new MarketItem("Conjured Mana Cake", 10, 30);
     items.push(testItem)
 
