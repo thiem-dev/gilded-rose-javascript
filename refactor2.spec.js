@@ -12,7 +12,7 @@ describe("updateQuality", () => {
     expect(testItem.sellIn).toBe(4);
   });
 
-  it("expired items degrade quality 2x faster", () => {
+  it("expired basic items degrade quality 2x faster", () => {
     const testItem = new BasicItem("regular expired item", -1, 10);
     items.push(testItem);
 
