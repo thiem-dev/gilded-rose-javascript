@@ -9,54 +9,40 @@ export class ItemR {
 }
 
 export class MarketItem extends ItemR{
-
     constructor(name, sellIn, quality){
         super(name, sellIn, quality)
     }
-
     updateQuality(){
         if(specialItemsList.includes(this.name) || this.name.includes('Conjured')){
             this.updateSpecialItemQuality()
         } else {
             this.updateRegularItemQuality();
         }
-
         this.decreaseSellIn();
-
         if (this.sellIn < 0) {
             this.updateExpiredItemQuality();
         }
     }
-
+    
     updateRegularItemQuality(){
-        // console.log(this.name, 'is a regular item')
-
-        
         if(this.quality > 0 && this.name !== "Sulfuras, Hand of Ragnaros"){
             this.quality -= 1
         }
-        
     }
 
     updateSpecialItemQuality(){
-        // console.log(this.name, 'is a special item')
-
         if(this.name === "Backstage passes to a TAFKAL80ETC concert"){
             this.updateBackstagePassQuality()
             return;
         }
-
         if(this.name.includes('Conjured')){
             this.updateConjuredQuality()
             return;
         }
-
         if (this.quality < 50) {
             this.quality += 1;
         }
-
     }
-
 
     decreaseSellIn(){
         if (this.name !== "Sulfuras, Hand of Ragnaros") {
@@ -72,7 +58,6 @@ export class MarketItem extends ItemR{
         } else if(this.name == "Aged Brie"){
             this.updateAgedBrieQuality()
         }
-
     }
 
     updateAgedBrieQuality(){
@@ -84,14 +69,12 @@ export class MarketItem extends ItemR{
     updateBackstagePassQuality(){
         if (this.quality < 50) {
             this.quality += 1;
-        
             if (this.sellIn <= 10) {
                 this.quality += 1;
             }
             if (this.sellIn <= 5) {
                 this.quality += 1;
             }
-
         }
     }
 
@@ -99,7 +82,6 @@ export class MarketItem extends ItemR{
         this.quality -= 2;
     }
 }
-
 
 export let itemsR = [];
 
@@ -112,16 +94,10 @@ itemsR.push(new MarketItem("Conjured Mana Cake", 3, 6));
 itemsR.push(new MarketItem("Frosted Flakes", 5, 8))
 itemsR.push(new MarketItem("Lucky Charms", 0, 4))
 
-
 export const nextDay = () => {
-    // console.log(itemsR)
     for(let item of itemsR){
-        //end of day
         item.updateQuality()
-
     }
-
-    // console.log(itemsR)
 }
 
 nextDay();
